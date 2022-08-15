@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { postDetailQuery } from "../../../utils/queries";
-
 import { client } from "../../../utils/client";
 import { uuid } from "uuidv4";
 
@@ -18,25 +17,29 @@ export default async function handler(
 
     res.status(200).json(data[0]);
   } else if (req.method === "PUT") {
-    const { comment, userId } = req.body;
+    const { id } = req.query;
 
-    const { id }: any = req.query;
+    if (req.method === "PUT") {
+      const { comment, userId } = req.body;
 
-    const data = await client
+      const { id }: any = req.query;
 
-      .patch(id)
+      const data = await client
 
-      .setIfMissing({ comments: [] })
+        .patch(id)
 
-      .insert("after", "comments[-1]", [
-        {
-          comment: comment,
-          _key: uuid(),
-          postedBy: { _type: "postedBy", _ref: userId },
-        },
-      ])
+        .setIfMissing({ comments: [] })
 
-      .commit();
-    res.status(200).json(data);
+        .insert("after", "comments[-1]", [
+          {
+            comment: comment,
+            _key: uuid(),
+            postedBy: { _type: "postedBy", _ref: userId },
+          },
+        ])
+
+        .commit();
+      res.status(200).json(data);
+    }
   }
 }
