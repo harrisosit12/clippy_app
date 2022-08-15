@@ -68,6 +68,10 @@ const Detail = ({ postDetails }) => {
     }
   };
 
+  const deleteVideo = async () => {
+    const { data } = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
+  };
+
   // useEffect(() => {
   //   if (post && videoRef?.current) {
   //     videoRef.current.muted = isVideoMuted;
@@ -137,6 +141,7 @@ const Detail = ({ postDetails }) => {
               </div>
             </div>
           </Link>
+          {/* <button onClick={() => deleteVideo}>Delete VIDEO</button> */}
           <div className="px-10">
             <p className=" text-md text-gray-600">{post.caption}</p>
           </div>
@@ -151,6 +156,7 @@ const Detail = ({ postDetails }) => {
               />
             )}
           </div>
+
           <Comments
             comment={comment}
             setComment={setComment}

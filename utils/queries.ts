@@ -58,6 +58,35 @@ export const postDetailQuery = (postId: string | string[]) => {
   return query;
 };
 
+// export const deleteDetailQuery = (postId: string | string[]) => {
+//   const query = `*[_type == "post" && _id == '${postId}']{
+//     _id,
+//      caption,
+//        video{
+//         asset->{
+//           _id,
+//           url
+//         }
+//       },
+//       userId,
+//     postedBy->{
+//       _id,
+//       userName,
+//       image
+//     },
+//      likes,
+//     comments[]{
+//       comment,
+//       _key,
+//       postedBy->{
+//         _ref,
+//       _id,
+//     },
+//     }
+//   }`;
+//   return query;
+// };
+
 export const searchPostsQuery = (searchTerm: string | string[]) => {
   const query = `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
     _id,
