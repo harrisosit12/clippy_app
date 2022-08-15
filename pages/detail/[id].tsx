@@ -150,7 +150,7 @@ const Detail = ({ postDetails }) => {
                 handleDislike={() => handleLike(false)}
               />
             )}
-          </div>g
+          </div>
           <Comments
             comment={comment}
             setComment={setComment}

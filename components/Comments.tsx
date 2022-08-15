@@ -41,8 +41,7 @@ const Comments = ({
                 (user: IUser) =>
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
                     <div
-                      className="p-2 items-center 
-                    border-b-2 border-gray200"
+                      className="p-2 items-center border-b-2 border-gray-200"
                       key={idx}
                     >
                       <Link href={`/profile/${user._id}`}>
@@ -57,12 +56,14 @@ const Comments = ({
                               layout="responsive"
                             />
                           </div>
+
                           <p className="flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-primary">
                             {user.userName}{" "}
                             <GoVerified className="text-blue-400" />
                           </p>
                         </div>
                       </Link>
+
                       <div>
                         <p className="-mt-5 ml-16 text-[16px] mr-8">
                           {item.comment}

@@ -16,7 +16,10 @@ export default async function handler(
     const data = await client.fetch(query);
 
     res.status(200).json(data[0]);
-  } else if (req.method === "PUT") {
+
+  } 
+  
+  else if (req.method === "PUT") {
     const { id } = req.query;
 
     if (req.method === "PUT") {
